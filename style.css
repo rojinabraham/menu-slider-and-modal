@@ -1,23 +1,29 @@
 @import url("https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap");
 :root {
   --modal-duration: 1s;
-  --primary-color: #357774;
+  --primary-color: #357777;
   --secondary-color: #e78f54;
 }
 * {
   box-sizing: border-box;
+}
+body {
   font-family: "Lato";
   margin: 0;
+  transition: transform 0.3s ease;
+}
+body.show-nav {
+  transform: translateX(250px);
 }
 nav {
   background-color: var(--primary-color);
   border-right: 2px solid rgba(200, 200, 200, 0.1);
-  color: fff;
+  color: #fff;
   position: fixed;
   top: 0;
   left: 0;
-  width: 200px;
-  height: 100vh;
+  width: 250px;
+  height: 100%;
   z-index: 100;
   transform: translateX(-100%);
 }
@@ -53,7 +59,7 @@ nav ul li a:hover {
 header {
   background-color: var(--primary-color);
   color: white;
-  font-size: 130%;
+  font-size: 1.3rem;
   position: relative;
   padding: 40px 50px;
   text-align: center;
@@ -91,12 +97,15 @@ button:focus {
 }
 .modal-container {
   background-color: rgba(0, 0, 0, 0.6);
-  /* display: none; */
+  display: none;
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
+}
+.modal-container.show-modal {
+  display: block;
 }
 .modal {
   background-color: #fff;
@@ -109,6 +118,8 @@ button:focus {
   transform: translate(-50%, -50%);
   max-width: 100%;
   width: 400px;
+  animation-name: modal-open;
+  animation-duration: var(--modal-duration);
 }
 .modal-header {
   background-color: var(--primary-color);
@@ -117,7 +128,7 @@ button:focus {
 }
 .modal-header h3 {
   margin: 0;
-  border-bottom: 1px solid #333;
+  /* border-bottom: 1px solid #333; */
 }
 .modal-content {
   padding: 20px;
@@ -140,4 +151,12 @@ button:focus {
   position: absolute;
   top: 0;
   right: 0;
+}
+@keyframes modal-open {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
